@@ -2,9 +2,13 @@
 
 Репозиторий — единый источник правды для работы с проекта с разных устройств в одном аккаунте Cursor.
 
-**Сейчас идёт этап планирования (итерация 3).** Код автоматизации ещё не пишем.
+Уточнение по продукту (см. `docs/issledovanie.md`): это не Linux-композитор Wayfire, а iOS-приложение **Wayfair Service Pro** (внутренний контур Wayhome). Имя репозитория пока не меняю.
 
-Уточнение по продукту (см. `docs/issledovanie.md`): в открытых источниках это не Linux-композитор Wayfire, а iOS-приложение **Wayfair Service Pro** (внутренний контур Wayhome). Имя репозитория пока не меняю.
+## Статус
+
+Планирование **целевой** автоматизации (Simulator + серое IPA + автосъём curl из приложения) **закрыто отказом**. См. [заключение](docs/zaklyuchenie-planirovaniya.md).
+
+Кода робота в этом репозитории не будет, пока не сменится развилка 19/22.
 
 ## Правила проекта
 
@@ -17,23 +21,13 @@
 
 1. Клонируете этот репозиторий (или делаете `git pull`).
 2. Планы и вопросы читаете в `docs/`.
-3. Запуск симуляторов iPhone возможен **только на Mac с Xcode**. Cursor Cloud / Linux-агент симуляторы не запустит.
-4. Приложение из App Store в iOS Simulator **не ставится** — это ограничение Apple, не «ещё не дописали скрипт».
+3. Cursor Cloud / Linux-агент симуляторы iPhone не запустит.
+4. Приложение из App Store в iOS Simulator **не ставится** штатно.
 
 ## Документы
 
-- [Исследование и черновик архитектуры](docs/issledovanie.md)
-- [Вопросы, итерация 1](docs/voprosy-iteraciya-1.md)
-- [Вопросы, итерация 2](docs/voprosy-iteraciya-2.md) / [ответы](docs/otvety-iteraciya-2.md)
-- [Вопросы, итерация 3](docs/voprosy-iteraciya-3.md) — **нужен ответ на вопрос 19**
-
-## venv на Mac (когда дойдём до кода)
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
-
-Пока файла `requirements.txt` нет: зависимости появятся после окончательного плана (и только под согласованную легальную схему).
+- [Заключение планирования](docs/zaklyuchenie-planirovaniya.md)
+- [Исследование](docs/issledovanie.md)
+- [Итерация 1](docs/voprosy-iteraciya-1.md)
+- [Итерация 2](docs/voprosy-iteraciya-2.md) / [ответы](docs/otvety-iteraciya-2.md)
+- [Итерация 3](docs/voprosy-iteraciya-3.md) / [ответы](docs/otvety-iteraciya-3.md)
