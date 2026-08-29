@@ -1,0 +1,20 @@
+# Скопируйте в config/profiles.local.yaml (файл в git не коммитится).
+# simulator_udid — после: xcrun simctl list devices available
+
+profiles:
+  - id: pro-01
+    label: "Тестовый профиль / iPhone 15"
+    device_model: "iPhone 15"
+    simulator_udid: "00000000-0000-0000-0000-000000000000"
+    bundle_id: "com.wayfair.WayHome"
+    ui_scenario: "config/ui/pro-01.yaml"
+    enabled: true
+
+  # Раскомментируйте по мере готовности симуляторов:
+  # - id: pro-02
+  #   label: "…"
+  #   device_model: "iPhone 14 Pro"
+  #   simulator_udid: "…"
+  #   bundle_id: "com.wayfair.WayHome"
+  #   ui_scenario: "config/ui/pro-02.yaml"
+  #   enabled: false

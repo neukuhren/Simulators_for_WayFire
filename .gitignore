@@ -1,0 +1,35 @@
+# Виртуальное окружение Python — всегда создаём локально на Mac, в git не кладём
+.venv/
+venv/
+env/
+
+# Секреты, токены, сохранённые HTTP-запросы с авторизацией
+.env
+.env.*
+!.env.example
+secrets/
+data/curls/
+data/state.json
+data/capture/
+config/profiles.local.yaml
+config/settings.yaml
+config/ui/pro-*.yaml
+!config/ui/*.example.yaml
+*.pem
+*.p12
+*.key
+
+# Системные и IDE-файлы
+.DS_Store
+.idea/
+.vscode/
+*.pyc
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Артефакты симуляторов и сборок (если появятся локально)
+*.app
+*.ipa
+DerivedData/
