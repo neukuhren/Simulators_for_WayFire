@@ -10,6 +10,7 @@ env/
 secrets/
 data/curls/
 data/state.json
+data/capture/
 config/profiles.local.yaml
 config/settings.yaml
 config/ui/pro-*.yaml
