@@ -9,6 +9,11 @@ env/
 !.env.example
 secrets/
 data/curls/
+data/state.json
+config/profiles.local.yaml
+config/settings.yaml
+config/ui/pro-*.yaml
+!config/ui/*.example.yaml
 *.pem
 *.p12
 *.key

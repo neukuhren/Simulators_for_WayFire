@@ -2,32 +2,54 @@
 
 Репозиторий — единый источник правды для работы с проекта с разных устройств в одном аккаунте Cursor.
 
-Уточнение по продукту (см. `docs/issledovanie.md`): это не Linux-композитор Wayfire, а iOS-приложение **Wayfair Service Pro** (внутренний контур Wayhome). Имя репозитория пока не меняю.
+Продукт: **Wayfair Service Pro** (Wayhome). Установку IPA на симулятор и первичный вход в аккаунты делаете **вы**; этот проект автоматизирует остальное.
 
 ## Статус
 
-Планирование **целевой** автоматизации (Simulator + серое IPA + автосъём curl из приложения) **закрыто отказом**. См. [заключение](docs/zaklyuchenie-planirovaniya.md).
+**Итоговый план готов** — [`docs/plan-itogovyy.md`](docs/plan-itogovyy.md). Реализация кода — следующий этап (фазы 1–5 в плане).
 
-Кода робота в этом репозитории не будет, пока не сменится развилка 19/22.
+## Что делает проект
+
+По очереди для каждого профиля (`pro-01`, …):
+
+1. Запускает симулятор (`simctl`).
+2. Открывает приложение и выполняет UI-сценарий (тапы через `idb`).
+3. Через локальный `mitmproxy` перехватывает `GetAvailableJobs`.
+4. Сохраняет сырой `curl` в `secrets/<profile_id>/` (не в git).
+
+Poll / claim — в другом репозитории.
 
 ## Правила проекта
 
-1. На Mac (и вообще при запуске Python) всегда используем `venv`.
-2. Общение, документация и комментарии в коде — на русском языке.
-3. Секреты, пароли, токены и сохранённые HTTP-запросы с авторизацией в git не кладём.
-4. Если задаю вопрос — к нему прилагаю варианты и рекомендацию с обоснованием.
+1. На Mac всегда работаем внутри `venv`.
+2. Общение, документация и комментарии — на русском.
+3. Секреты и живые curl в git не кладём.
 
-## Как работать с разных устройств
+## Быстрый старт (после реализации кода)
 
-1. Клонируете этот репозиторий (или делаете `git pull`).
-2. Планы и вопросы читаете в `docs/`.
-3. Cursor Cloud / Linux-агент симуляторы iPhone не запустит.
-4. Приложение из App Store в iOS Simulator **не ставится** штатно.
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+cp config/profiles.example.yaml config/profiles.local.yaml
+cp config/settings.example.yaml config/settings.yaml
+cp config/ui/pro-01.example.yaml config/ui/pro-01.yaml
+# UDID, координаты UI, bundle id
+
+python -m wayfire_sim run
+```
 
 ## Документы
 
-- [Заключение планирования](docs/zaklyuchenie-planirovaniya.md)
+- [Итоговый план](docs/plan-itogovyy.md)
 - [Исследование](docs/issledovanie.md)
-- [Итерация 1](docs/voprosy-iteraciya-1.md)
-- [Итерация 2](docs/voprosy-iteraciya-2.md) / [ответы](docs/otvety-iteraciya-2.md)
-- [Итерация 3](docs/voprosy-iteraciya-3.md) / [ответы](docs/otvety-iteraciya-3.md)
+- [Ответы итерации 2](docs/otvety-iteraciya-2.md) / [3](docs/otvety-iteraciya-3.md)
+
+## Зависимости на Mac (вне pip)
+
+- Xcode + Simulator
+- `idb` (Facebook) для UI-тапов
+- `mitmproxy` (ставится через `requirements.txt` в venv)
+
+Cursor Cloud симуляторы не запускает — прогон только на вашем Mac.

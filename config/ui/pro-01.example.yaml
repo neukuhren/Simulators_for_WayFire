@@ -1,0 +1,25 @@
+# Скопируйте в config/ui/pro-01.yaml и подставьте координаты под ваш экран.
+# Запись: idb ui tap X Y ; idb ui describe --json
+
+steps:
+  - action: sleep
+    seconds: 8
+
+  # Пример: переход на вкладку со списком заказов
+  - action: tap
+    x: 120
+    y: 780
+
+  - action: sleep
+    seconds: 2
+
+  # Пример: жест обновления (pull-to-refresh)
+  - action: swipe
+    x1: 200
+    y1: 300
+    x2: 200
+    y2: 600
+    duration_ms: 400
+
+  - action: sleep
+    seconds: 5

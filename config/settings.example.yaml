@@ -1,0 +1,24 @@
+# Скопируйте в config/settings.yaml и настройте локально.
+
+mitm:
+  host: "127.0.0.1"
+  port: 8080
+  # Ограничить перехват (меньше шума на Mac)
+  allow_hosts:
+    - "www.wayfair.com"
+    - "secure.wayfair.com"
+
+proxy_mac:
+  # Имя интерфейса из: networksetup -listallnetworkservices
+  network_service: "Wi-Fi"
+  # Включать системный прокси только на время работы оркестратора
+  manage_system_proxy: true
+
+orchestrator:
+  pause_between_profiles_sec: 60
+  capture_timeout_sec: 90
+  boot_timeout_sec: 120
+  profiles_config: "config/profiles.local.yaml"
+
+storage:
+  secrets_dir: "secrets"
