@@ -25,9 +25,30 @@ Poll / claim — в другом репозитории.
 2. Общение, документация и комментарии — на русском.
 3. Секреты и живые curl в git не кладём.
 
-## Установка (Mac)
+## Рабочая директория на Mac
+
+```
+/Users/me/dev/Simulators_for_WayFire
+```
+
+Подробно: [`docs/ustanovka-mac.md`](docs/ustanovka-mac.md).
+
+**Один раз на Mac** (Терминал):
 
 ```bash
+bash scripts/setup-mac.sh
+```
+
+Скрипт клонирует/обновит репозиторий в этот путь, создаст `.venv` и установит зависимости.
+
+Откройте в Cursor: **File → Open Folder** → `/Users/me/dev/Simulators_for_WayFire`.
+
+> Облачный агент Cursor не имеет доступа к вашему Mac — перенос выполняется локально этим скриптом.
+
+## Установка вручную (если скрипт не нужен)
+
+```bash
+cd /Users/me/dev/Simulators_for_WayFire
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
